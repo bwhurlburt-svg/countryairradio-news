@@ -1,5 +1,5 @@
 name: Country Air Radio News Generator
-
+# Bump FTP action version to v4.3.1
 on:
   schedule:
     - cron: '0 11 * * *'   # Runs daily at 11:00 UTC
