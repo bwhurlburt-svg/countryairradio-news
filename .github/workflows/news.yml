@@ -1,0 +1,13 @@
+name: Country Air Radio News Generator
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # Runs daily at 11:00 UTC
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm workflow runs
+        run: echo "Country Air Radio automation is alive"
