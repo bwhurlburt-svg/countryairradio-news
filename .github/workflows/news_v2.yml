@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  test_python:
+  generate_news:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,17 +19,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install gTTS feedparser --user
+          python -m pip install gTTS feedparser
 
       - name: Run generate_news.py
         run: python generate_news.py
-- name: Upload MP3 via FTP
-  uses: SamKirkland/FTP-Deploy-Action@v4.3.1
-  with:
-    server: ${{ secrets.FTP_HOST }}
-    username: ${{ secrets.FTP_USERNAME }}
-    password: ${{ secrets.FTP_PASSWORD }}
-    local-dir: .
-    server-dir: /public_html/auto_news/
-    include: CAR_LocalNews_*.mp3
-    git-ftp-args: --insecure
+
+      - name: Upload MP3 via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.1
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: .
+          server-dir: /public_html/auto_news/
+          include: CAR_LocalNews_*.mp3
+          git-ftp-args: --insecure
+
+      - name: List generated files
+        run: ls -lh
