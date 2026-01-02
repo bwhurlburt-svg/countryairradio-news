@@ -5,7 +5,7 @@ import feedparser
 from datetime import datetime
 
 # === CONFIGURATION ===
-RSS_FEED = '://countryairradio.com/news/rss'  # Replace with your real RSS feed
+RSS_FEED = 'https://countryairradio.com/news/rss'  # Replace with your real RSS feed
 OUTPUT_FOLDER = './'  # For GitHub Actions, the current folder
 TOP_N_HEADLINES = 7
 
