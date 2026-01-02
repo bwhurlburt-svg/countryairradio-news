@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout your repository
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -37,8 +37,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: .
           server-dir: /public_html/auto_news/
-          include: CAR_LocalNews_*.mp3
-          git-ftp-args: --insecure
 
       # 6️⃣ List files to verify
       - name: List generated files
