@@ -25,6 +25,15 @@ jobs:
 
       - name: Run generate_news.py
         run: python generate_news.py
-
+      - name: Upload MP3 via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: .
+          server-dir: /public_html/auto_news/
+          include: CAR_LocalNews_*.mp3
+          git-ftp-args: --insecure
       - name: List generated files
         run: ls -lh
