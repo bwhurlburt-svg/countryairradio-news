@@ -24,7 +24,7 @@ jobs:
       - name: Run generate_news.py
         run: python generate_news.py
 
-            - name: Upload MP3 via FTP
+      - name: Upload MP3 via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
           server: ${{ secrets.FTP_HOST }}
