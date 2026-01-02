@@ -1,5 +1,22 @@
+from gtts import gTTS
+import feedparser
 from datetime import datetime
+import os
 
-print("Country Air Radio News Generator")
-print("Python is running successfully")
-print("Current time:", datetime.utcnow())
+# --- CONFIG ---
+RSS_FEED = 'https://countryairradio.com/news/rss'  # Your actual RSS feed
+OUTPUT_FOLDER = './'  # Current folder in GitHub Actions
+TOP_N_HEADLINES = 5
+MP3_FILENAME = f"CAR_LocalNews_{datetime.now().strftime('%Y%m%d_%H%M')}.mp3"
+
+# --- PARSE RSS ---
+feed = feedparser.parse(RSS_FEED)
+headlines = [entry.title for entry in feed.entries[:TOP_N_HEADLINES]]
+news_text = "Here are the top headlines: " + " ... ".join(headlines)
+
+# --- GENERATE MP3 ---
+tts = gTTS(news_text)
+output_path = os.path.join(OUTPUT_FOLDER, MP3_FILENAME)
+tts.save(output_path)
+
+print(f"Generated MP3: {output_path}")
