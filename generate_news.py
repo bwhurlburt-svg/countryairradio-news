@@ -5,8 +5,12 @@ import os
 
 # --- CONFIG ---
 RSS_FEED = 'https://countryairradio.com/news/rss'  # Your actual RSS feed
-OUTPUT_FOLDER = './'  # Current folder in GitHub Actions
+OUTPUT_FOLDER = './auto_news/'  # Folder for generated MP3s
 TOP_N_HEADLINES = 5
+
+if not os.path.exists(OUTPUT_FOLDER):
+    os.makedirs(OUTPUT_FOLDER)
+
 MP3_FILENAME = f"CAR_LocalNews_{datetime.now().strftime('%Y%m%d_%H%M')}.mp3"
 
 # --- PARSE RSS ---
