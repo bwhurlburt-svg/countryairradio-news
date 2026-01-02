@@ -1,14 +1,14 @@
-name: Country Air Radio News Generator V2
+name: Country Air Radio News Generator Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  generate_news:
+  test_generate_news:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository
+      # 1️⃣ Checkout your repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -22,22 +22,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --user gTTS feedparser
+          python -m pip install gTTS feedparser
 
       # 4️⃣ Run the news generation script
       - name: Run generate_news.py
         run: python generate_news.py
 
-      # 5️⃣ Upload generated MP3s via FTP
-      - name: Upload MP3 via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.1
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: .
-          server-dir: /public_html/auto_news/
-
-      # 6️⃣ List files to verify
-      - name: List generated files
+      # 5️⃣ List files to verify output
+      - name: List files in repo
         run: ls -lh
