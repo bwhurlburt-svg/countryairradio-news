@@ -35,9 +35,9 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./auto_news/       # <-- matches Python output folder
+          local-dir: ./auto_news/
           server-dir: /public_html/auto_news/
 
-      # 6️⃣ List files to verify
-      - name: List generated files
-        run: ls -lh
+      # 6️⃣ List generated MP3s
+      - name: List generated MP3 files
+        run: ls -lh auto_news/
