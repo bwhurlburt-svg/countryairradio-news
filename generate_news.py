@@ -16,7 +16,7 @@ MP3_FILENAME = f"CAR_LocalNews_{datetime.now().strftime('%Y%m%d_%H%M')}.mp3"
 # --- PARSE RSS ---
 feed = feedparser.parse(RSS_FEED)
 headlines = [entry.title for entry in feed.entries[:TOP_N_HEADLINES]]
-news_text = "Here are the top headlines: " + " ... ".join(headlines)
+news_text = "Here at Country Air Radio Dot Come we don't create the news, we promote the Headlines of those that do! Lettig you investigate the one's that interest you the most: " + " ... ".join(headlines)
 
 # --- GENERATE MP3 ---
 tts = gTTS(news_text)
