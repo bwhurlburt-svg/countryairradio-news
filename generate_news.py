@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 
 # --- CONFIG ---
-RSS_FEED = 'https://countryairradio.com/news/rss'  # Your actual RSS feed
+RSS_FEED = 'RSS_FEED = 'https://countryairradio.com/category/newsrss/feed/''  # Your actual RSS feed
 OUTPUT_FOLDER = './auto_news/'  # Folder for generated MP3s
 TOP_N_HEADLINES = 5
 
